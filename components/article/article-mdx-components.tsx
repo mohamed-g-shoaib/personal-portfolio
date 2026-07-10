@@ -1,6 +1,6 @@
 /* eslint-disable react-doctor/no-multi-comp, react-doctor/only-export-components -- MDX component maps are intentionally multi-component with a non-component export */
 import type { MDXComponents } from "mdx/types"
-import type * as React from "react"
+import * as React from "react"
 
 import { ArticleCodeBlock } from "@/components/article/article-code-block"
 import { ArticleImage } from "@/components/article/article-image"
@@ -14,9 +14,33 @@ export const articleMDXComponents = {
   img: ArticleImage,
   kbd: Kbd,
   ol: ArticleOrderedList,
+  p: ArticleParagraph,
   pre: ArticleCodeBlock,
   ul: ArticleUnorderedList,
 } satisfies MDXComponents
+
+function isSoleImageChild(children: React.ReactNode): boolean {
+  const childArray = React.Children.toArray(children)
+
+  return (
+    childArray.length === 1 &&
+    React.isValidElement(childArray[0]) &&
+    childArray[0].type === ArticleImage
+  )
+}
+
+function ArticleParagraph({
+  children,
+  ...props
+}: React.ComponentPropsWithoutRef<"p">): React.ReactElement {
+  // Markdown wraps a lone image in a <p>, but ArticleImage renders a <div>-based
+  // skeleton; a <div> inside a <p> is invalid HTML and breaks hydration.
+  if (isSoleImageChild(children)) {
+    return <>{children}</>
+  }
+
+  return <p {...props}>{children}</p>
+}
 
 function ArticleLink({
   children,
