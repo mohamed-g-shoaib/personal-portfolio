@@ -5,7 +5,7 @@ import type {
 
 export const siteIdentity = {
   name: "Mohamed Gamal",
-  title: "Software Engineer",
+  title: "Frontend Developer",
   email: "mohamed.g.shoaib@gmail.com",
 } satisfies SiteIdentity
 

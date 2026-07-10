@@ -21,9 +21,9 @@ const rootDiscoveryRoutes = [
   {
     kind: "home",
     href: "/",
-    title: `${siteIdentity.name} | Software Engineer`,
+    title: `${siteIdentity.name} | Frontend Developer`,
     description:
-      "Software engineer based in Cairo, Egypt. I build React and Next.js products with close attention to interface quality, architecture, and performance.",
+      "Frontend developer based in Cairo, Egypt. I build React and Next.js products with close attention to interface quality, architecture, and performance.",
   },
   {
     kind: "projects",

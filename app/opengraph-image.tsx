@@ -10,5 +10,5 @@ export const size = ogImageSize
 export const contentType = ogImageContentType
 
 export default function Image() {
-  return renderOgImage({ kicker: "Software Engineer", title: siteConfig.name })
+  return renderOgImage({ kicker: "Frontend Developer", title: siteConfig.name })
 }
