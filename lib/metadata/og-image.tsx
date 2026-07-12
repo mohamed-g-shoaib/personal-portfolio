@@ -48,10 +48,10 @@ export async function renderOgImage({ kicker, title }: OgImageContent) {
         flexDirection: "column",
         height: "100%",
         justifyContent: "space-between",
-        paddingBottom: "100px",
-        paddingLeft: "80px",
-        paddingRight: "80px",
-        paddingTop: "80px",
+        paddingBottom: "125px",
+        paddingLeft: "75px",
+        paddingRight: "75px",
+        paddingTop: "75px",
         width: "100%",
       }}
     >
