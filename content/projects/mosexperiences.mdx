@@ -2,39 +2,128 @@
 title: Mo's Experiences
 slug: mosexperiences
 description: >-
-  Tourism website for a travel agency, built with Next.js, multilingual
-  routing, searchable travel content, inquiry flows, and dashboard management.
-summary: Tourism website
+  A bilingual Egypt travel platform built for travelers and the team that keeps
+  every page current.
+summary: Bilingual Egypt travel platform
 liveHref: "http://mosexperiences.com/"
 order: 0
 featured: true
 status: published
 stack:
-  - TypeScript
   - Next.js
+  - React
+  - TypeScript
   - Tailwind CSS
-  - shadcn/ui
-  - Resend
+  - Supabase
   - next-intl
+  - Tiptap
   - React Hook Form
-  - Framer Motion
-  - TanStack Query
+  - Zod
+  - Resend
+  - React Email
+  - Umami
 publishedAt: "2026-06-15"
 ---
 
 <ProjectMediaPlaceholder />
 
-## Problem
+Mo's Experiences helps English- and French-speaking travelers explore Egypt, compare programs, and ask for a trip shaped around them. I worked across both sides of that experience: the public website people use to plan and the editorial system that keeps its content, routes, and search presence accurate.
 
-Mo's Experiences needed more than a brochure site. The team needed multilingual travel content, searchable destinations and packages, inquiry flows, and a way to manage the site without editing code.
+## At a glance
 
-## Solution
+- **Client:** Mo's Experiences
+- **Sector:** Travel and tourism
+- **Delivery:** October 2025–July 2026
+- **Stage:** Release candidate. Pre-deploy SEO gates pass; deployment and field checks remain.
+- **Audience:** English- and French-speaking travelers planning a trip to Egypt
+- **Scope:** Public website, editorial dashboard, bilingual content system, SEO, email, and analytics
 
-I delivered an English and French site with browsing, search, favorites, several inquiry forms, and an admin dashboard for managing content and watching analytics, Web Vitals, and SEO signals.
+## My role
 
-## Architecture
+- Product and content architecture
+- Information architecture and bilingual route design
+- Public website UX and interface development
+- Editorial dashboard and content-model design
+- Technical SEO and structured data
+- Transactional email and first-party analytics
+- Accessibility, performance, and release checks
 
-The project uses Next.js 15.5.5 App Router, TypeScript, Tailwind CSS 4, and shadcn/ui. Supabase handles PostgreSQL and Auth, TanStack Query manages server state, Resend sends email, `next-themes` handles theming, and a small custom layer tracks analytics.
+## The brief
+
+Create a useful travel site without leaving the team dependent on developers for daily content work.
+
+Travelers needed a quick way to understand where to go, what each program includes, and which option fits their trip. The internal team needed direct control over programs, destinations, articles, images, search metadata, and publishing in both English and French.
+
+These needs had to work as one product. A polished public site would soon fall behind if the team could not maintain it. A flexible content system would also fail if it produced uneven pages or unclear choices for travelers.
+
+## The challenge
+
+Egypt travel content changes often. Programs grow, details change, new pages go live, and each language may have its own publishing state. Search engines also need the same clear signals across page content, status codes, canonical URLs, language alternatives, sitemaps, and robots rules.
+
+A generic page builder would give editors too much room to break the structure. A fixed marketing site would give them too little control. The project needed a content model that supports regular changes while keeping the public experience consistent.
+
+## The approach
+
+I built the public website and editorial dashboard around one structured source of truth.
+
+The dashboard owns the content people read: names, summaries, itineraries, FAQs, images, metadata, and publishing state. The application owns layout, interaction, and visual rules. Editors can change what a page says without rebuilding how the page works.
+
+English and French are part of the data model and route structure. Publication and indexability follow one shared policy, so the website, sitemap, metadata, and robots rules make the same decision about whether a page should appear in search.
+
+## What I built
+
+### For travelers
+
+- Localized routes in English and French
+- Destination, category, program, VIP tour, article, gallery, contact, and custom-trip pages
+- Clear links from discovery to inquiry
+- Responsive program pages with structured itineraries, details, FAQs, and related content
+- Inquiry and review forms with transactional email
+
+### For the team
+
+- A page-aware dashboard for programs, destinations, categories, articles, testimonials, media, settings, and team access
+- Structured fields that match the public pages instead of a blank page canvas
+- Rich-text editing where it helps, with fixed content rules where consistency matters
+- Controls for metadata, social images, routes, redirects, publication, and ordering
+- Role-based access backed by database policies
+
+## SEO is part of the architecture
+
+Search visibility does not depend on a late audit or a plug-in. The public rendering and content systems follow a shared SEO contract.
+
+- Meaningful headings, copy, and links arrive in the first HTML response and remain available when JavaScript is off.
+- Loading states cannot replace the server-rendered page or hide its main content.
+- Invalid and unpublished entities return real `404` responses.
+- Canonical URLs, language alternatives, sitemaps, robots rules, and page-level index controls use the same publication policy.
+- Auth pages stay out of search through page-level `noindex` rules.
+- Program pages use one responsive content tree, which avoids duplicate mobile and desktop markup.
+- Automated release checks cover rendering, navigation, status codes, index controls, layout stability, and HTML payload size.
+
+The July 28, 2026 release gate checks every one of the 166 URLs in the current sitemap against the sitewide HTML limit. It also checks representative route families in more detail, including their raw response, rendered content, and Googlebot response.
+
+## Outcome
+
+Mo's Experiences now has one system for the public site and the work required to keep it accurate.
+
+Travelers get a focused path from research to inquiry in either supported language. Editors and SEO specialists can update the content and search signals tied to those pages without asking a developer to make routine changes. New programs use the same rendering, payload, and indexability rules as existing ones, so the approach can support a larger catalog without page-specific fixes.
+
+The current release candidate passes its pre-deployment SEO checks. Search Console inspection, an external crawl, and real-user performance data remain post-deployment checks; the project does not treat local test results as proof of search performance.
+
+## Delivery timeline
+
+- **October 2025–May 2026:** Data model, access rules, and editorial dashboard
+- **June 2026:** Public website, bilingual content, email, performance, and SEO work
+- **July 2026:** Analytics, SEO rendering architecture, payload controls, and release checks
+
+## Technology
+
+- **Application:** Next.js, React, TypeScript, Tailwind CSS
+- **Content and forms:** Tiptap, React Hook Form, Zod
+- **Data and access:** Supabase, PostgreSQL, Auth, Row Level Security
+- **Language, email, and analytics:** next-intl, Resend, React Email, Umami
+
+The stack supports the product model: server-rendered public pages, structured dashboard-managed content, secure role-based access, and bilingual routes that work as part of the core system.
 
 ## Stack
 

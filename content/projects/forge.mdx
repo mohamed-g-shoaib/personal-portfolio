@@ -2,9 +2,9 @@
 title: Forge
 slug: forge
 description: >-
-  CLI tool for generating React starters with TypeScript, Tailwind, i18n,
-  theming, sound hooks, and code-quality tooling already wired.
-summary: React starter CLI
+  A CLI that generates clean React starters with the app shell, localization,
+  metadata, and code-quality setup already wired.
+summary: React starter generator
 liveHref: "https://use-forge.vercel.app/"
 sourceHref: "https://github.com/mohamedgshoaib/forge"
 order: 6
@@ -15,26 +15,90 @@ stack:
   - Node.js
   - React
   - Next.js
+  - Vite
+  - TanStack Start
   - shadcn/ui
   - Base UI
+  - Radix UI
   - next-intl
+  - react-i18next
   - Biome
 publishedAt: "2026-06-15"
 ---
 
 <ProjectMediaPlaceholder />
 
-## Problem
+Forge is a CLI that generates clean React starters for teams who want to begin with the app shell already wired.
 
-Starting a serious React project often begins with an hour of chores: routing, theming, i18n, metadata, fallback pages, linting, formatting, and the first pass at an app shell. Forge came from wanting that setup to feel less like copying yesterday's project.
+It combines a shadcn scaffold with Forge-owned setup for theme switching, optional RTL routing, framework-specific i18n, sound hooks, fallback pages, metadata, code-quality tooling, and starter documentation. The generated app stays intentionally small so it is easy to understand and replace.
 
-## Solution
+## At a glance
 
-I built a CLI that creates a small starter first, then layers in framework-aware overlays and optional feature packs. It can add theme switching, English and Arabic routing, framework-specific i18n, starter docs, sound hooks, and lint/format setup.
+- **Product:** `create-use-forge`, a React starter generator
+- **Supported frameworks:** Next.js, Vite, and TanStack Start
+- **UI bases:** Base UI or Radix through shadcn scaffolds
+- **Direction:** LTR or English/Arabic RTL
+- **Default preset:** Next.js, Base UI, LTR, pnpm, and Biome
+- **Release status:** Package prepared as version `0.1.4`; npm publishing and registry verification remain
 
-## Architecture
+## The challenge
 
-Forge is a single-package TypeScript CLI built around scaffold adapters, framework overlays, and feature packs. It can generate starters for Next.js, Vite, and TanStack Start, with Base UI or Radix-based surfaces through shadcn scaffolds. The default preset is intentionally opinionated: Next.js, Base UI, LTR, pnpm, and Biome.
+Starting a serious React project often begins with an hour of chores: routing, theming, i18n, metadata, fallback pages, linting, formatting, and the first pass at an app shell. That setup is necessary, but it is rarely the work a team is trying to begin with.
+
+Forge came from wanting that starting point to feel less like copying yesterday's project while keeping the generated result small enough to understand, own, and change.
+
+## My role
+
+I designed and built the generator, including:
+
+- The CLI configuration and interactive generation experience
+- Framework-aware scaffolding for Next.js, Vite, and TanStack Start
+- App-shell overlays for providers, routing, themes, metadata, and fallback surfaces
+- Optional English/Arabic RTL runtime behavior
+- Feature packs for sounds, documentation, dependency freshness, CSS polish, and code quality
+- Generation verification and retained regression fixtures
+
+## What Forge generates
+
+### The core starter
+
+Every generated starter includes:
+
+- A minimal editable starter page
+- Theme switching
+- Framework-native error and not-found surfaces
+- Favicon and minimal metadata
+- Centralized click and theme-switch sound hooks
+- A README with the selected package manager’s commands
+- One selected lint and format setup
+
+### RTL as a first-class option
+
+RTL mode adds English and Arabic locale routes, a language switch, and runtime `lang` and `dir` handling. Next.js uses `next-intl`; Vite and TanStack Start use `react-i18next`.
+
+## How the generator works
+
+Forge is a single-package TypeScript CLI built around three layers:
+
+1. A scaffold adapter invokes the current shadcn scaffold for the selected framework and primitive base.
+2. A framework overlay adds the app shell, routing, providers, fallback surfaces, and framework-specific files.
+3. Feature packs add shared concerns such as sounds, metadata, docs, dependency freshness, CSS polish, RTL runtime behavior, and code quality.
+
+Generated projects are verified after generation through the selected package manager’s install, formatting, lint, typecheck, and build commands. Retained fixtures are generated outputs used as regression targets rather than hand-maintained template copies.
+
+## Outcome
+
+Forge gives a team a deliberate starting point instead of a blank scaffold: the recurring foundations are in place, but the generated project remains narrow enough to inspect and replace.
+
+The package is prepared for public release as `create-use-forge` version `0.1.4`. Publishing to npm and verifying the initializer commands in the registry are still outstanding, so this case study does not present it as publicly released.
+
+## Technology
+
+- **Core:** TypeScript and Node.js
+- **Framework targets:** Next.js, Vite, and TanStack Start
+- **UI:** shadcn scaffolds with Base UI or Radix
+- **Localization:** `next-intl` and `react-i18next`
+- **Quality:** Biome, ESLint/Prettier, or Oxlint/Oxfmt according to the selected configuration
 
 ## Stack
 
