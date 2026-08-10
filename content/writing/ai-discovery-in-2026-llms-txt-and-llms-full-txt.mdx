@@ -14,17 +14,15 @@ readingTime: "5 min read"
 
 ![Cover image for the AI Discovery writing post.](/assets/writing/llms.webp)
 
-More websites are being read by automated systems before a person ever clicks through. Some are search crawlers. Some are internal retrieval layers. Some are assistants trying to summarize what a site is about. That leaves a practical question: how do you give those readers the important parts of a site without asking them to scrape meaning out of the whole interface?
+Automated systems often read a website before a person clicks through. Search crawlers, retrieval systems, and assistants all need to work out what the site contains. The practical question is how to point them toward the useful parts without making them extract meaning from the whole interface.
 
-One useful answer is `llms.txt`.
+That is the problem `llms.txt` is trying to solve.
 
 ## What llms.txt Actually Is
 
 `llms.txt` is an emerging convention, not a settled web standard. The idea is to publish a small Markdown file at the root of a site that explains what the site is and where the important content lives.
 
-The value is not magic indexing. It is clarity.
-
-Instead of making a machine reader infer the site's purpose from navigation, layout chrome, and scattered metadata, you give it a compact summary written on purpose.
+It does not unlock special indexing. It gives machine readers a clear entry point: a compact summary of the site's purpose and its important pages.
 
 ## Why It Helps
 
@@ -40,7 +38,7 @@ That does not guarantee better citations or better ranking in every AI product. 
 
 A short summary helps, but sometimes it is too thin. That is where `llms-full.txt` becomes useful.
 
-The split is simple:
+I find it useful to give the two files separate jobs:
 
 - `llms.txt` is the map
 - `llms-full.txt` is the fuller reference
@@ -49,16 +47,14 @@ The small file should tell a reader what the site contains and where to go next.
 
 ## How I Think About It In Practice
 
-The mistake is treating `llms.txt` like a silver bullet, or pretending the ecosystem is more settled than it is.
-
-The better posture is:
+I would not treat `llms.txt` as a shortcut or pretend the convention is settled. My working rules are:
 
 1. keep the file short
 2. describe the site honestly
 3. link to the most important content
 4. maintain a fuller companion document if your site has meaningful depth
 
-That makes the file a small interface layer for machine readers instead of another SEO superstition.
+For me, the file works as a short navigation layer for machine readers.
 
 ## The Useful Analogy
 
@@ -68,4 +64,4 @@ One is access control guidance; the other is content guidance. The difference ma
 
 ## Closing Thought
 
-The practical case for `llms.txt` is not that the web now belongs to AI. It is that websites benefit from having one clean, intentional description of themselves that does not depend on rendered UI. Even if the convention changes, that part is already useful.
+Even if the convention changes, I still want a clean description of the site that does not depend on rendered UI. That summary remains useful on its own.
